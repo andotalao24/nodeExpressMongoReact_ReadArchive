@@ -5,7 +5,8 @@
   "main": "backend.js",
   "scripts": {
     "start": "node backend.js",
-    "dev": "nodemon backend.js"
+    "dev": "nodemon backend.js",
+    "seed": "node config/seed.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
