@@ -2,6 +2,23 @@
 import { Link } from "react-router-dom";
 import "./BookCard.css";
 
+// Pick a consistent color based on the title so each book gets a stable shade
+function colorFromTitle(title) {
+  const colors = [
+    "#4f46e5",
+    "#0891b2",
+    "#be123c",
+    "#15803d",
+    "#b45309",
+    "#7c3aed",
+    "#0f766e",
+    "#a21caf",
+  ];
+  let sum = 0;
+  for (let i = 0; i < title.length; i++) sum += title.charCodeAt(i);
+  return colors[sum % colors.length];
+}
+
 function BookCard({ book }) {
   return (
     <Link to={`/books/${book._id}`} className="book-card">
@@ -9,7 +26,13 @@ function BookCard({ book }) {
         {book.coverImage ? (
           <img src={book.coverImage} alt={book.title} />
         ) : (
-          <div className="book-card-placeholder">{book.type}</div>
+          <div
+            className="book-card-textcover"
+            style={{ background: colorFromTitle(book.title) }}
+          >
+            <span className="book-card-textcover-title">{book.title}</span>
+            <span className="book-card-textcover-author">{book.author}</span>
+          </div>
         )}
       </div>
       <div className="book-card-body">

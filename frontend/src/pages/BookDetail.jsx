@@ -44,7 +44,10 @@ function BookDetail() {
           {book.coverImage ? (
             <img src={book.coverImage} alt={book.title} />
           ) : (
-            <div className="detail-placeholder">{book.type}</div>
+            <div className="detail-textcover">
+              <span className="detail-textcover-title">{book.title}</span>
+              <span className="detail-textcover-author">{book.author}</span>
+            </div>
           )}
         </div>
         <div className="detail-info">

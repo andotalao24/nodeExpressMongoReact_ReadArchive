@@ -1,6 +1,8 @@
 import express from "express";
 import session from "express-session";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 import connectDB from "./config/db.js";
 import passport from "./config/passport.js";
 import authRoutes from "./routes/auth.js";
@@ -10,6 +12,7 @@ import userRoutes from "./routes/users.js";
 dotenv.config();
 await connectDB();
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -29,6 +32,15 @@ app.use(passport.session());
 app.use("/api/auth", authRoutes);
 app.use("/api/books", bookRoutes);
 app.use("/api/users", userRoutes);
+
+// Serve the built React frontend
+app.use(express.static(path.join(__dirname, "frontend/dist")));
+app.use((req, res, next) => {
+  if (req.method === "GET" && !req.path.startsWith("/api")) {
+    return res.sendFile(path.join(__dirname, "frontend/dist/index.html"));
+  }
+  next();
+});
 
 app.use((err, _req, res, _next) => {
   console.error(err.stack);
