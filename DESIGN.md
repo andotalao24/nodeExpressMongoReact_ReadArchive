@@ -7,6 +7,7 @@ ReadArchive is a community-driven archive for books, PDFs, and articles where us
 We built ReadArchive because information about books and research papers is often scattered across multiple websites. Our goal is a centralized platform where users can contribute, search, organize, and share reading resources.
 
 **Tech Stack**
+
 - Backend: Node.js + Express
 - Frontend: React
 - Database: MongoDB (Node.js Driver)
@@ -48,12 +49,12 @@ An active user who helps keep the database accurate by updating descriptions and
 
 ### CRUD Operations
 
-| Operation | Actions |
-|-----------|---------|
-| Create | Register/Login · Submit new entry · Add description & links · Add to favorites |
-| Read | Search entries · View entry detail & PDF links · View favorites & collections |
-| Update | Edit entry description · Add/update resource links · Manage favorites & collections |
-| Delete | Delete an entry · Remove from favorites or collection |
+| Operation | Actions                                                                             |
+| --------- | ----------------------------------------------------------------------------------- |
+| Create    | Register/Login · Submit new entry · Add description & links · Add to favorites      |
+| Read      | Search entries · View entry detail & PDF links · View favorites & collections       |
+| Update    | Edit entry description · Add/update resource links · Manage favorites & collections |
+| Delete    | Delete an entry · Remove from favorites or collection                               |
 
 ---
 
@@ -405,17 +406,17 @@ An active user who helps keep the database accurate by updating descriptions and
 
 ## Page Inventory
 
-| # | Page | Primary Persona |
-|---|------|----------------|
-| 1 | Home / Landing | All |
-| 2 | Search Results | Zhang |
-| 3 | Entry Detail | Zhang |
-| 4 | Register / Login | All |
-| 5 | Submit New Entry | Michael |
-| 6 | Edit Entry | David |
-| 7 | Profile — Favorites | Tom |
-| 8 | My Collections | Tom |
-| 9 | Collection Detail (Shared) | Tom / All |
+| #   | Page                       | Primary Persona |
+| --- | -------------------------- | --------------- |
+| 1   | Home / Landing             | All             |
+| 2   | Search Results             | Zhang           |
+| 3   | Entry Detail               | Zhang           |
+| 4   | Register / Login           | All             |
+| 5   | Submit New Entry           | Michael         |
+| 6   | Edit Entry                 | David           |
+| 7   | Profile — Favorites        | Tom             |
+| 8   | My Collections             | Tom             |
+| 9   | Collection Detail (Shared) | Tom / All       |
 
 ---
 

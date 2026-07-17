@@ -64,7 +64,9 @@ function Collections() {
   };
 
   if (!user)
-    return <p className="col-status">Please log in to view your collections.</p>;
+    return (
+      <p className="col-status">Please log in to view your collections.</p>
+    );
   if (loading) return <p className="col-status">Loading...</p>;
 
   return (
@@ -92,7 +94,10 @@ function Collections() {
               <div className="col-card-header">
                 <h3>{col.name}</h3>
                 <div className="col-card-actions">
-                  <button type="button" onClick={() => renameCollection(col._id)}>
+                  <button
+                    type="button"
+                    onClick={() => renameCollection(col._id)}
+                  >
                     Rename
                   </button>
                   <button

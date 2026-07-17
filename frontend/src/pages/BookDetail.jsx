@@ -69,7 +69,13 @@ function BookDetail() {
             <div className="detail-links">
               <h3>Resources</h3>
               {book.links.map((link) => (
-                <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="detail-link">
+                <a
+                  key={link.url}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="detail-link"
+                >
                   {link.label}
                 </a>
               ))}
@@ -77,7 +83,11 @@ function BookDetail() {
           )}
 
           {user ? (
-            <button type="button" className="detail-fav-btn" onClick={addToFavorites}>
+            <button
+              type="button"
+              className="detail-fav-btn"
+              onClick={addToFavorites}
+            >
               Add to Favorites
             </button>
           ) : (

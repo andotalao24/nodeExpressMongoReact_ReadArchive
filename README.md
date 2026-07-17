@@ -9,12 +9,12 @@
 
 ## 👤 Authors
 
-| Field | Student 1 | Student 2 |
-|-------|-----------|-----------|
-| **Name** | Smitkumar Jayendrakumar Velani | Zhiteng Guo |
-| **Email** | velanismitkumar@gmail.com | guo.zhit@northeastern.edu |
-| **GitHub** | [Smit-Velani](https://github.com/Smit-Velani) | [zhitengg7898-design](https://github.com/zhitengg7898-design) |
-| **Published** | July 2026 | July 2026 |
+| Field         | Student 1                                     | Student 2                                                     |
+| ------------- | --------------------------------------------- | ------------------------------------------------------------- |
+| **Name**      | Smitkumar Jayendrakumar Velani                | Zhiteng Guo                                                   |
+| **Email**     | velanismitkumar@gmail.com                     | guo.zhit@northeastern.edu                                     |
+| **GitHub**    | [Smit-Velani](https://github.com/Smit-Velani) | [zhitengg7898-design](https://github.com/zhitengg7898-design) |
+| **Published** | July 2026                                     | July 2026                                                     |
 
 ---
 
@@ -47,6 +47,7 @@ ReadArchive is a full-stack reading archive platform built with Node.js, Express
 ## ✨ Features
 
 **Book & Article Catalog (Smitkumar Velani)**
+
 - Search books and articles by title, author, or keyword
 - Filter by type (books / articles) with paginated "Load More"
 - View entry details and resource links (free PDFs, purchase pages)
@@ -54,11 +55,13 @@ ReadArchive is a full-stack reading archive platform built with Node.js, Express
 - Text-based fallback covers for entries without images
 
 **Favorites & Collections (Zhiteng Guo)**
+
 - Save entries to a personal favorites list
 - Create, rename, and delete named collections — full CRUD
 - Session-based authentication with Passport.js
 
 **Technical**
+
 - 2 MongoDB collections: `books` and `users`
 - RESTful API with full CRUD on both collections
 - React with Hooks, client-side rendered via Vite
@@ -71,6 +74,7 @@ ReadArchive is a full-stack reading archive platform built with Node.js, Express
 ## 🛠️ Instructions to Build
 
 ### Prerequisites
+
 - [Node.js](https://nodejs.org/) v18 or higher
 - [npm](https://www.npmjs.com/)
 - [MongoDB](https://www.mongodb.com/) (Atlas or local)
@@ -144,32 +148,35 @@ npm run format
 ## 🔌 API Endpoints
 
 ### Auth — `/api/auth`
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/register` | Create a new account |
-| POST | `/login` | Log in |
-| POST | `/logout` | Log out |
+
+| Method | Endpoint    | Description          |
+| ------ | ----------- | -------------------- |
+| POST   | `/register` | Create a new account |
+| POST   | `/login`    | Log in               |
+| POST   | `/logout`   | Log out              |
 
 ### Books & Articles — `/api/books`
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/` | Search / list entries (paginated) |
-| GET | `/:id` | Get single entry details |
-| POST | `/` | Submit a new entry _(auth)_ |
-| PUT | `/:id` | Update an entry _(auth)_ |
-| DELETE | `/:id` | Delete an entry _(auth)_ |
+
+| Method | Endpoint | Description                       |
+| ------ | -------- | --------------------------------- |
+| GET    | `/`      | Search / list entries (paginated) |
+| GET    | `/:id`   | Get single entry details          |
+| POST   | `/`      | Submit a new entry _(auth)_       |
+| PUT    | `/:id`   | Update an entry _(auth)_          |
+| DELETE | `/:id`   | Delete an entry _(auth)_          |
 
 ### Users — `/api/users`
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/me` | Get current session user |
-| GET | `/favorites` | Get favorites |
-| POST | `/favorites` | Add to favorites |
-| DELETE | `/favorites/:bookId` | Remove from favorites |
-| GET | `/collections` | Get collections |
-| POST | `/collections` | Create a collection |
-| PUT | `/collections/:colId` | Update a collection |
-| DELETE | `/collections/:colId` | Delete a collection |
+
+| Method | Endpoint              | Description              |
+| ------ | --------------------- | ------------------------ |
+| GET    | `/me`                 | Get current session user |
+| GET    | `/favorites`          | Get favorites            |
+| POST   | `/favorites`          | Add to favorites         |
+| DELETE | `/favorites/:bookId`  | Remove from favorites    |
+| GET    | `/collections`        | Get collections          |
+| POST   | `/collections`        | Create a collection      |
+| PUT    | `/collections/:colId` | Update a collection      |
+| DELETE | `/collections/:colId` | Delete a collection      |
 
 ---
 
@@ -178,6 +185,7 @@ npm run format
 **MongoDB with 2 collections:**
 
 **`books` collection:**
+
 ```json
 {
   "_id": "ObjectId",
@@ -186,15 +194,14 @@ npm run format
   "type": "book",
   "description": "...",
   "coverImage": "https://...",
-  "links": [
-    { "label": "Buy on Amazon", "url": "https://..." }
-  ],
+  "links": [{ "label": "Buy on Amazon", "url": "https://..." }],
   "submittedBy": "ObjectId",
   "createdAt": "2026-07-17T00:00:00Z"
 }
 ```
 
 **`users` collection:**
+
 ```json
 {
   "_id": "ObjectId",
@@ -225,16 +232,18 @@ The database is seeded with 1000+ synthetic records.
 
 ## 🤖 GenAI Tools
 
-| Tool | Version | Usage |
-|------|---------|-------|
+| Tool   | Version                 | Usage                                                      |
+| ------ | ----------------------- | ---------------------------------------------------------- |
 | Claude | claude-opus (Anthropic) | Frontend development assistance, documentation, deployment |
 
 **How it was used:**
+
 - **Frontend (React)** — Claude assisted in building the React components (Home, BookDetail, BookCard, Navbar, Login, Register, Favorites, Collections), the API client, and the auth context, with explanation of each file
 - **README & Design Document** — Claude helped structure the documentation and wireframes
 - **Debugging & Deployment** — Claude assisted troubleshooting the MongoDB Atlas connection and Render deployment configuration
 
 **What was NOT AI generated:**
+
 - MongoDB connection module and native-driver collection setup
 - Express REST API routes (auth, books, users)
 - Passport.js session authentication
@@ -255,6 +264,7 @@ The full design document including project description, user personas, user stor
 📄 [DESIGN.md](DESIGN.md)
 
 ---
+
 <p align="center">
   Built by <strong>Smitkumar Jayendrakumar Velani</strong> and <strong>Zhiteng Guo</strong> &middot; CS5610 Web Development &middot; Northeastern University &middot; July 2026
 </p>

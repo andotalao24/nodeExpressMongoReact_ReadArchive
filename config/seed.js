@@ -418,7 +418,16 @@ const seed = async () => {
   const now = new Date();
 
   // Keep the real books, then pad to 1000+ with realistic generated variations
-  const editions = ["First Edition", "Second Edition", "Revised Edition", "Annotated Edition", "Deluxe Edition", "International Edition", "Student Edition", "Anniversary Edition"];
+  const editions = [
+    "First Edition",
+    "Second Edition",
+    "Revised Edition",
+    "Annotated Edition",
+    "Deluxe Edition",
+    "International Edition",
+    "Student Edition",
+    "Anniversary Edition",
+  ];
   const allBooks = [...mockBooks];
   let i = 0;
   while (allBooks.length < 1050) {
@@ -455,5 +464,3 @@ seed().catch((err) => {
   console.error(err);
   process.exit(1);
 });
-
-

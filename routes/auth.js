@@ -56,7 +56,8 @@ router.post("/login", (req, res, next) => {
         .json({ message: info?.message || "Invalid credentials" });
     req.login(user, (err) => {
       if (err) return next(err);
-      const { password: _, ...safeUser } = user;
+      const safeUser = { ...user };
+      delete safeUser.password;
       res.json({ user: safeUser });
     });
   })(req, res, next);
