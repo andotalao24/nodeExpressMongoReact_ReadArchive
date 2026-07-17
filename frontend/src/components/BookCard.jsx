@@ -1,8 +1,8 @@
-﻿import PropTypes from "prop-types";
+﻿import { useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "./BookCard.css";
 
-// Pick a consistent color based on the title so each book gets a stable shade
 function colorFromTitle(title) {
   const colors = [
     "#4f46e5",
@@ -20,11 +20,26 @@ function colorFromTitle(title) {
 }
 
 function BookCard({ book }) {
+  const [imgFailed, setImgFailed] = useState(false);
+  const showImage = book.coverImage && !imgFailed;
+
+  const handleLoad = (e) => {
+    // Some broken URLs load a tiny placeholder pixel; treat those as failed
+    if (e.target.naturalWidth < 50 || e.target.naturalHeight < 50) {
+      setImgFailed(true);
+    }
+  };
+
   return (
     <Link to={`/books/${book._id}`} className="book-card">
       <div className="book-card-cover">
-        {book.coverImage ? (
-          <img src={book.coverImage} alt={book.title} />
+        {showImage ? (
+          <img
+            src={book.coverImage}
+            alt={book.title}
+            onError={() => setImgFailed(true)}
+            onLoad={handleLoad}
+          />
         ) : (
           <div
             className="book-card-textcover"

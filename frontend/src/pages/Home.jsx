@@ -7,33 +7,45 @@ function Home() {
   const [books, setBooks] = useState([]);
   const [query, setQuery] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const loadBooks = useCallback(async () => {
-    setLoading(true);
-    setError("");
-    try {
-      const params = new URLSearchParams();
-      if (query) params.set("q", query);
-      if (typeFilter) params.set("type", typeFilter);
-      params.set("limit", "24");
-      const data = await api.get(`/books?${params.toString()}`);
-      setBooks(data.books);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  }, [query, typeFilter]);
+  const loadBooks = useCallback(
+    async (pageNum, append) => {
+      setLoading(true);
+      setError("");
+      try {
+        const params = new URLSearchParams();
+        if (query) params.set("q", query);
+        if (typeFilter) params.set("type", typeFilter);
+        params.set("page", String(pageNum));
+        params.set("limit", "24");
+        const data = await api.get(`/books?${params.toString()}`);
+        setBooks((prev) => (append ? [...prev, ...data.books] : data.books));
+        setTotalPages(data.pages);
+        setPage(data.page);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [query, typeFilter],
+  );
 
   useEffect(() => {
-    loadBooks();
+    loadBooks(1, false);
   }, [loadBooks]);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    loadBooks();
+    loadBooks(1, false);
+  };
+
+  const loadMore = () => {
+    loadBooks(page + 1, true);
   };
 
   return (
@@ -75,7 +87,6 @@ function Home() {
         </div>
       </div>
 
-      {loading && <p className="home-status">Loading...</p>}
       {error && <p className="home-status home-error">{error}</p>}
       {!loading && !error && books.length === 0 && (
         <p className="home-status">No results found.</p>
@@ -86,6 +97,16 @@ function Home() {
           <BookCard key={book._id} book={book} />
         ))}
       </div>
+
+      {loading && <p className="home-status">Loading...</p>}
+
+      {!loading && page < totalPages && (
+        <div className="home-loadmore">
+          <button type="button" onClick={loadMore}>
+            Load More
+          </button>
+        </div>
+      )}
     </div>
   );
 }

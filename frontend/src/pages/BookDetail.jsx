@@ -11,6 +11,7 @@ function BookDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [favMsg, setFavMsg] = useState("");
+  const [imgFailed, setImgFailed] = useState(false);
 
   useEffect(() => {
     api
@@ -34,6 +35,8 @@ function BookDetail() {
   if (error) return <p className="detail-status detail-error">{error}</p>;
   if (!book) return <p className="detail-status">Book not found.</p>;
 
+  const showImage = book.coverImage && !imgFailed;
+
   return (
     <div className="detail">
       <Link to="/" className="detail-back">
@@ -41,8 +44,12 @@ function BookDetail() {
       </Link>
       <div className="detail-content">
         <div className="detail-cover">
-          {book.coverImage ? (
-            <img src={book.coverImage} alt={book.title} />
+          {showImage ? (
+            <img
+              src={book.coverImage}
+              alt={book.title}
+              onError={() => setImgFailed(true)}
+            />
           ) : (
             <div className="detail-textcover">
               <span className="detail-textcover-title">{book.title}</span>
