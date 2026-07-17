@@ -1,0 +1,27 @@
+.fav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.fav-title {
+  font-size: 1.8rem;
+  color: #111827;
+  margin: 0 0 1.5rem;
+}
+
+.fav-status {
+  text-align: center;
+  padding: 3rem;
+  color: #6b7280;
+}
+
+.fav-error {
+  color: #b91c1c;
+}
+
+.fav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}

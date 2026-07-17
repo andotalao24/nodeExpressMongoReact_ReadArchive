@@ -1,6 +1,4 @@
-﻿import { MongoClient } from "mongodb";
-import dns from "dns";
-dns.setServers(["8.8.8.8", "8.8.4.4"]);
+import { MongoClient } from "mongodb";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
 
@@ -376,7 +374,7 @@ const mockBooks = [
     author: "Daniel Kahneman",
     type: "book",
     description:
-      "Nobel laureate Kahneman explores the two systems of thought â€” fast intuitive thinking and slow deliberate reasoning â€” and how they shape our decisions.",
+      "Nobel laureate Kahneman explores the two systems of thought — fast intuitive thinking and slow deliberate reasoning — and how they shape our decisions.",
     coverImage: "https://m.media-amazon.com/images/I/71wvKXWoMqL.jpg",
     links: [
       {
@@ -416,26 +414,7 @@ const seed = async () => {
   console.log("Existing books cleared");
 
   const now = new Date();
-
-  // Keep the real books, then pad to 1000+ with realistic generated variations
-  const editions = ["First Edition", "Second Edition", "Revised Edition", "Annotated Edition", "Deluxe Edition", "International Edition", "Student Edition", "Anniversary Edition"];
-  const allBooks = [...mockBooks];
-  let i = 0;
-  while (allBooks.length < 1050) {
-    const base = mockBooks[i % mockBooks.length];
-    const edition = editions[i % editions.length];
-    const vol = Math.floor(i / mockBooks.length) + 1;
-    allBooks.push({
-      ...base,
-      title: `${base.title} (${edition}, Vol. ${vol})`,
-      description: base.description,
-      links: base.links,
-      coverImage: base.coverImage,
-    });
-    i++;
-  }
-
-  const books = allBooks.map((b) => ({
+  const books = mockBooks.map((b) => ({
     ...b,
     submittedBy: seeder._id,
     createdAt: now,
@@ -455,5 +434,3 @@ seed().catch((err) => {
   console.error(err);
   process.exit(1);
 });
-
-
