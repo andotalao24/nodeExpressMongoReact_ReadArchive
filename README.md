@@ -1,87 +1,79 @@
-# ReadArchive — Community Reading Archive
+# 📚 ReadArchive — Community Reading Archive
 
-> A community-driven archive for books, PDFs, and articles where users can search by title, view descriptions, and access useful resource links. Registered users can save favorites, organize them into collections, and share those collections with others.
+> A community-driven archive for books, PDFs, and articles where users can search by title, view descriptions, and access useful resource links. Registered users can save favorites and organize them into collections.
 
----
-
-## Authors
-
-| Field         | Student 1                                                     | Student 2 |
-| ------------- | ------------------------------------------------------------- | --------- |
-| **Name**      | Zhiteng Guo                                                   | Smitkumar Jayendrakumar Velani                          |
-| **Email**     | guo.zhit@northeastern.edu                                     | velanismitkumar@gmail.com                               |
-| **GitHub**    | [zhitengg7898-design](https://github.com/zhitengg7898-design) | [Smit-Velani](https://github.com/Smit-Velani)          |
-| **Published** | July 2026                                                     | July 2026                                               |
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-2563EB?style=for-the-badge)](https://nodeexpressmongoreact-readarchive.onrender.com)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/zhitengg7898-design/nodeExpressMongoReact_ReadArchive)
 
 ---
 
-## Class
+## 👤 Authors
+
+| Field | Student 1 | Student 2 |
+|-------|-----------|-----------|
+| **Name** | Smitkumar Jayendrakumar Velani | Zhiteng Guo |
+| **Email** | velanismitkumar@gmail.com | guo.zhit@northeastern.edu |
+| **GitHub** | [Smit-Velani](https://github.com/Smit-Velani) | [zhitengg7898-design](https://github.com/zhitengg7898-design) |
+| **Published** | July 2026 | July 2026 |
+
+---
+
+## 🎓 Class
 
 **CS5610 — Web Development**
 Khoury College of Computer Sciences, Northeastern University
-[Course Page](https://johnguerra.co/classes/webDevelopment_online_summer_2026/)
+🔗 [Course Page](https://johnguerra.co/classes/webDevelopment_online_summer_2026/)
 
 ---
 
-## Project Objective
+## 🎯 Project Objective
 
-ReadArchive is a full-stack reading archive platform built with Node.js, Express, MongoDB, and React. Users can search for books and articles, view resource links (free PDFs, purchase pages, library links), and contribute new entries to grow the shared database. Registered users can save favorites, organize them into named collections, and share those collections publicly.
+ReadArchive is a full-stack reading archive platform built with Node.js, Express, MongoDB (native driver), and React with Hooks (client-side rendered). Users can search for books and articles, view resource links (free PDFs, purchase pages), and contribute new entries. Registered users can save favorites and organize them into named collections.
 
 **The problem we solve:** Information about books and research papers is often scattered across multiple websites. ReadArchive centralizes it — one place to find, contribute, and organize reading resources, powered by the community.
 
 ---
 
-## Screenshot
+## 📸 Screenshot
 
-> Live at: _(deploy link here)_
+![ReadArchive Screenshot](./screenshot.png)
 
----
+> Live at: **https://nodeexpressmongoreact-readarchive.onrender.com**
 
-## Project Structure
-
-```
-ReadAchive/
-├── backend.js                  # Express app entry point
-├── routes/
-│   ├── auth.js                 # Register / login / logout
-│   ├── books.js                # Book & article CRUD
-│   └── users.js                # Favorites & collections
-├── middleware/
-│   └── auth.js                 # Session auth guard
-├── config/
-│   └── seed.js                 # Database seed script
-├── frontend/                   # React + Vite app
-│   ├── index.html
-│   └── src/
-│       ├── App.jsx
-│       └── main.jsx
-├── .env.example                # Environment variables template
-├── package.json                # Backend dependencies
-└── README.md
-```
+> Note: Hosted on Render's free tier — the first request after inactivity may take ~50 seconds to wake.
 
 ---
 
-## Features
+## ✨ Features
 
+**Book & Article Catalog (Smitkumar Velani)**
 - Search books and articles by title, author, or keyword
-- View resource links — free PDFs, purchase pages, library links
-- Submit new entries with descriptions and links
-- Edit existing entries to keep information accurate
+- Filter by type (books / articles) with paginated "Load More"
+- View entry details and resource links (free PDFs, purchase pages)
+- Submit, edit, and delete entries — full CRUD
+- Text-based fallback covers for entries without images
+
+**Favorites & Collections (Zhiteng Guo)**
 - Save entries to a personal favorites list
-- Organize favorites into named collections (public or private)
-- Share public collections via a link
-- Session-based authentication — no account required to browse
+- Create, rename, and delete named collections — full CRUD
+- Session-based authentication with Passport.js
+
+**Technical**
+- 2 MongoDB collections: `books` and `users`
+- RESTful API with full CRUD on both collections
+- React with Hooks, client-side rendered via Vite
+- ES6 modules throughout — no CommonJS require
+- CSS organized in per-component module files
+- No Mongoose, no CORS, no template engines
 
 ---
 
-## Instructions to Build
+## 🛠️ Instructions to Build
 
 ### Prerequisites
-
 - [Node.js](https://nodejs.org/) v18 or higher
 - [npm](https://www.npmjs.com/)
-- [MongoDB](https://www.mongodb.com/) (local or Atlas)
+- [MongoDB](https://www.mongodb.com/) (Atlas or local)
 
 ### Installation
 
@@ -90,7 +82,7 @@ ReadAchive/
 git clone https://github.com/zhitengg7898-design/nodeExpressMongoReact_ReadArchive.git
 
 # Navigate into the project
-cd ReadAchive
+cd nodeExpressMongoReact_ReadArchive
 
 # Install backend dependencies
 npm install
@@ -104,179 +96,165 @@ cd frontend && npm install && cd ..
 ```bash
 # Copy the example env file
 cp .env.example .env
+
+# Edit .env with your values
+# PORT=3000
+# MONGO_URI=your_mongodb_connection_string
+# SESSION_SECRET=your_secret_here
 ```
 
-Edit `.env` with your values:
-
-```
-MONGO_URI=mongodb://localhost:27017
-DB_NAME=readarchive
-SESSION_SECRET=your-secret-here
-PORT=3000
-```
-
-### Seed the Database (optional)
+### Seed Database
 
 ```bash
-node config/seed.js
+# Add 1000+ book and article records to the database
+npm run seed
 ```
 
 ### Running Locally
 
-Open two terminals:
-
 ```bash
-# Terminal 1 — backend (auto-restarts with nodemon)
+# Terminal 1 — backend (auto-reload with nodemon)
 npm run dev
 
-# Terminal 2 — frontend (Vite dev server on port 5000)
+# Terminal 2 — frontend (Vite dev server)
 cd frontend && npm run dev
 ```
-
-- Backend API: `http://localhost:3000`
-- Frontend: `http://localhost:5000`
 
 ### Production Build
 
 ```bash
-cd frontend && npm run build
-cd ..
+cd frontend && npm run build && cd ..
 npm start
 ```
 
----
+Open your browser at: `http://localhost:3000`
 
-## API Endpoints
+### Linting and Formatting
 
-### Auth — `/api/auth`
+```bash
+# Run ESLint
+npx eslint .
 
-| Method | Path        | Description              |
-| ------ | ----------- | ------------------------ |
-| POST   | `/register` | Create a new account     |
-| POST   | `/login`    | Log in                   |
-| POST   | `/logout`   | Log out                  |
-| GET    | `/me`       | Get current session user |
-
-### Books & Articles — `/api/books`
-
-| Method | Path   | Description                                   |
-| ------ | ------ | --------------------------------------------- |
-| GET    | `/`    | Search / list entries                         |
-| GET    | `/:id` | Get entry detail                              |
-| POST   | `/`    | Submit a new entry _(auth required)_          |
-| PUT    | `/:id` | Update description or links _(auth required)_ |
-| DELETE | `/:id` | Delete an entry _(auth required)_             |
-
-### Users — `/api/users`
-
-| Method | Path                 | Description                  |
-| ------ | -------------------- | ---------------------------- |
-| GET    | `/favorites`         | Get current user's favorites |
-| POST   | `/favorites/:bookId` | Add to favorites             |
-| DELETE | `/favorites/:bookId` | Remove from favorites        |
-| GET    | `/collections`       | Get user's collections       |
-| POST   | `/collections`       | Create a collection          |
-| PUT    | `/collections/:id`   | Update a collection          |
-| DELETE | `/collections/:id`   | Delete a collection          |
-
----
-
-## Database
-
-**MongoDB with 3 collections:**
-
-**`users` collection:**
-
-```json
-{
-  "_id": "ObjectId",
-  "username": "zhang_s",
-  "email": "zhang@example.com",
-  "password": "<bcrypt hash>",
-  "favorites": ["ObjectId", "..."],
-  "createdAt": "2026-07-01T00:00:00Z"
-}
+# Format with Prettier
+npm run format
 ```
 
-**`books` collection:**
+---
 
+## 🔌 API Endpoints
+
+### Auth — `/api/auth`
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/register` | Create a new account |
+| POST | `/login` | Log in |
+| POST | `/logout` | Log out |
+
+### Books & Articles — `/api/books`
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/` | Search / list entries (paginated) |
+| GET | `/:id` | Get single entry details |
+| POST | `/` | Submit a new entry _(auth)_ |
+| PUT | `/:id` | Update an entry _(auth)_ |
+| DELETE | `/:id` | Delete an entry _(auth)_ |
+
+### Users — `/api/users`
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/me` | Get current session user |
+| GET | `/favorites` | Get favorites |
+| POST | `/favorites` | Add to favorites |
+| DELETE | `/favorites/:bookId` | Remove from favorites |
+| GET | `/collections` | Get collections |
+| POST | `/collections` | Create a collection |
+| PUT | `/collections/:colId` | Update a collection |
+| DELETE | `/collections/:colId` | Delete a collection |
+
+---
+
+## 🗄️ Database
+
+**MongoDB with 2 collections:**
+
+**`books` collection:**
 ```json
 {
   "_id": "ObjectId",
   "title": "Thinking, Fast and Slow",
   "author": "Daniel Kahneman",
   "type": "book",
-  "category": "Psychology",
-  "year": 2011,
   "description": "...",
+  "coverImage": "https://...",
   "links": [
-    { "label": "Google Books", "url": "https://..." },
     { "label": "Buy on Amazon", "url": "https://..." }
   ],
   "submittedBy": "ObjectId",
-  "createdAt": "2026-07-01T00:00:00Z"
+  "createdAt": "2026-07-17T00:00:00Z"
 }
 ```
 
-**`collections` collection:**
-
+**`users` collection:**
 ```json
 {
   "_id": "ObjectId",
-  "name": "ML & AI Reading List",
-  "owner": "ObjectId",
-  "entries": ["ObjectId", "..."],
-  "visibility": "public",
-  "createdAt": "2026-07-01T00:00:00Z"
+  "username": "smit",
+  "email": "smit@example.com",
+  "password": "<bcrypt hash>",
+  "favorites": ["ObjectId", "..."],
+  "collections": [
+    { "_id": "ObjectId", "name": "ML Reading List", "books": ["ObjectId"] }
+  ],
+  "createdAt": "2026-07-17T00:00:00Z"
 }
 ```
 
+The database is seeded with 1000+ synthetic records.
+
 ---
 
-## Security
+## 🔒 Security
 
-- MongoDB credentials stored in `.env` (never committed to GitHub)
+- MongoDB credentials stored in `.env` (gitignored, never committed)
 - `.env.example` provided as a template with no real credentials
 - Passwords hashed with bcryptjs before storage
-- Session secret stored in environment variable
+- Session secret stored in an environment variable
 - Auth middleware guards all write operations
 
 ---
 
-## GenAI Tools
+## 🤖 GenAI Tools
 
-| Tool   | Version                       | Usage                                                |
-| ------ | ----------------------------- | ---------------------------------------------------- |
-| Claude | claude-sonnet-4-6 (Anthropic) | README structure, Design Document, wireframe mockups |
+| Tool | Version | Usage |
+|------|---------|-------|
+| Claude | claude-opus (Anthropic) | Frontend development assistance, documentation, deployment |
 
 **How it was used:**
-
-- **README** — Claude helped structure all required sections following project template
-- **Design Document** — Claude assisted with ASCII wireframe mockups for all 9 pages
-- **DESIGN.md** — Claude helped write user personas, user stories, and navigation flow
+- **Frontend (React)** — Claude assisted in building the React components (Home, BookDetail, BookCard, Navbar, Login, Register, Favorites, Collections), the API client, and the auth context, with explanation of each file
+- **README & Design Document** — Claude helped structure the documentation and wireframes
+- **Debugging & Deployment** — Claude assisted troubleshooting the MongoDB Atlas connection and Render deployment configuration
 
 **What was NOT AI generated:**
-
-- MongoDB connection and collection setup
+- MongoDB connection module and native-driver collection setup
 - Express REST API routes (auth, books, users)
 - Passport.js session authentication
-- React frontend components and routing
-- Seed script for initial database records
+- Seed script for 1000+ records
 
 ---
 
-## Design Document
+## 📄 License
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 📋 Design Document
 
 The full design document including project description, user personas, user stories, and design mockups is available here:
 
-[DESIGN.md](./DESIGN.md)
+📄 [DESIGN.md](DESIGN.md)
 
 ---
-
-## License
-
-This project is licensed under the **MIT License** — see the [LICENSE](./LICENSE) file for details.
-
----
-
-Built by **Zhiteng Guo** and **Smitkumar Jayendrakumar Velani** · CS5610 Web Development · Northeastern University · July 2026
+<p align="center">
+  Built by <strong>Smitkumar Jayendrakumar Velani</strong> and <strong>Zhiteng Guo</strong> &middot; CS5610 Web Development &middot; Northeastern University &middot; July 2026
+</p>
